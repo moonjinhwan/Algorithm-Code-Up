@@ -1,0 +1,40 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+
+bool visit[50];
+int answer=9876;
+void dfs(string begin, string target, vector<string> word, int cnt) {
+	string cur = begin;
+	if (begin == target) {
+		answer = min(cnt, answer);
+		return;
+	}
+	for (int i = 0; i < word.size(); i++) {
+		int diff = 0;
+		for (int j = 0; j < begin.size(); j++) {
+			if (!visit[i]) {
+				if (begin[j] != word[i][j]) {
+					diff++;
+				}
+			}
+		}
+		if (diff == 1) {
+			visit[i] = true;
+			dfs(word[i], target, word, cnt + 1);
+			visit[i] = false;
+		}
+	}
+}
+using namespace std;
+int solution(string begin, string target, vector<string> word) {
+	dfs(begin, target, word, 0);
+	if (answer == 9876)
+		return 0;
+	return	answer;
+}
+int main() {
+	cout<<solution("hit", "cog", { "hot", "dot", "dog", "lot", "log", "cog" });
+	
+}
