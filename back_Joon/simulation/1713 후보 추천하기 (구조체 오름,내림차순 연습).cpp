@@ -10,9 +10,9 @@ struct INFO {
 INFO info;
 bool cmp(INFO a, INFO b) {
 	if (a.up == b.up) {
-		return a.time < b.time;
+		return a.time < b.time;//a b를 앞과 뒤로 놓고 앞이 더 작은걸 sort
 	}
-	return a.up > b.up;
+	return a.up > b.up;//a b를 앞과 뒤로 놓고 앞이 더 큰걸 sort
 }
 bool resCmp(INFO a, INFO b) {
 	return a.type < b.type;
