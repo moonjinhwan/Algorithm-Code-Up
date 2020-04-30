@@ -1,3 +1,9 @@
+/*
+내 원래 위치 = 기억못하는 작은놈 + 기억 하는 큰놈
+
+즉, 가장 작은 놈부터 배치하면 나 보다 작은 놈은 넘기고
+기억하는 큰 놈 수 만큼 이동 하면 내 위치가 나온다.
+*/
 #include<iostream>
 #include<cstring>
 using namespace std;
