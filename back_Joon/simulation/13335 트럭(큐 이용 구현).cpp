@@ -11,18 +11,12 @@ int main() {
 		int input;
 		cin >> input;
 		while (true) {
-			if (q.empty()) {
-				q.push(input);
-				weightSum += input;
-				count++;
-				break;
-			}
-			else if (q.size() == w) {
+			if (q.size() == w) {
 				weightSum -= q.front();
 				q.pop();
 			}
 			else {
-				if (weightSum + input > l) {
+				if (weightSum + input > l) {//하중 초과
 					q.push(0);
 					count++;
 				}
@@ -35,5 +29,5 @@ int main() {
 			}
 		}
 	}
-	cout<<count+w;
+	cout << count + w;
 }
