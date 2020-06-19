@@ -15,9 +15,9 @@ int main() {
 	}
 	for (int i = 0; i < 26; i++) {
 		if (al[i] % 2 == 0) even++;
-		else { 
+		else {
 			middle = i;
-			odd++; 
+			odd++;
 		}
 	}
 	if (odd >= 2) {
