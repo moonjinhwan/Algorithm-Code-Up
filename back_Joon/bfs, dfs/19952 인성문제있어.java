@@ -63,12 +63,12 @@ public class Main {
 		q.add(new Pair(startr, startc, F));
 		while (!q.isEmpty()) {
 			Pair cur = q.poll();
-			if (cur.f < 1) {
-				continue;
-			}
 			if (cur.r == desr && cur.c == desc) {
 				flag = true;
 				break;
+			}
+			if (cur.f < 1) {
+				continue;
 			}
 			for (int i = 0; i < 4; i++) {
 				int nr = cur.r + dr[i];
@@ -76,16 +76,20 @@ public class Main {
 				int nf = cur.f - 1;
 				if (nr < 0 || nc < 0 || nr >= H || nc >= W)
 					continue;
-				if (visit[nf][nr][nc])
-					continue;
 				// 더 큰 경우
-				visit[nf][nr][nc]=true;
 				if (map[nr][nc] > map[cur.r][cur.c]) {
+					if (visit[nf][nr][nc])
+						continue;
 					if (cur.f >= (map[nr][nc] - map[cur.r][cur.c])) {
+						visit[nf][nr][nc]=true;
 						q.add(new Pair(nr, nc, nf));
 					}
 				} else {
+					if (visit[nf][nr][nc])
+						continue;
+					visit[nf][nr][nc]=true;
 					q.add(new Pair(nr, nc, nf));
+					
 				}
 			}
 		}
