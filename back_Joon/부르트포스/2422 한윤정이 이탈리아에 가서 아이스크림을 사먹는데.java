@@ -9,7 +9,6 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(in.readLine());
 		N = stoi(st.nextToken());
 		M = stoi(st.nextToken());
-		boolean visit[] = new boolean[N + 1];
 		map = new int[N + 1][N + 1];
 		for (int i = 0; i < M; i++) {
 			st = new StringTokenizer(in.readLine());
@@ -18,24 +17,20 @@ public class Main {
 			map[u][v] = 1;
 			map[v][u] = 1;
 		}
-		dfs(0, new boolean[N + 1], new int[3], 1);
+		dfs(0, new int[3], 1);
 		System.out.println(count);
 	}
 
-	static void dfs(int dep, boolean visit[], int arr[], int start) {
-		if (dep == 3) {
-			if (map[arr[0]][arr[1]] == 1 || map[arr[1]][arr[2]] == 1 || map[arr[0]][arr[2]] == 1)
+	static void dfs(int saveIdx, int save[], int start) {
+		if (saveIdx == 3) {
+			if (map[save[0]][save[1]] == 1 || map[save[1]][save[2]] == 1 || map[save[0]][save[2]] == 1)
 				return;
 			count++;
 			return;
 		}
 		for (int i = start; i <= N; i++) {
-			if (!visit[i]) {
-				visit[i] = true;
-				arr[dep] = i;
-				dfs(dep + 1, visit, arr, i + 1);
-				visit[i] = false;
-			}
+			save[saveIdx] = i;
+			dfs(saveIdx + 1, save, i + 1);
 		}
 	}
 
